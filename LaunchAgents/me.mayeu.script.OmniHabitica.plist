@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>EnvironmentVariables</key>
+    <dict>
+      <key>PATH</key>
+      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin</string>
+    </dict>
+    <key>Label</key>
+    <string>me.mayeu.script.OmniHabitica</string>
+    <key>ProgramArguments</key>
+    <array>
+      <string>/usr/local/bin/run-one</string>
+      <string>/Users/m/Documents/code/omnifocus-level-up/done_task_hook.sh</string>
+    </array>
+    <key>WatchPaths</key>
+    <array>
+      <string>/Users/m/Library/Containers/com.omnigroup.OmniFocus3/Data/Library/Application Support/OmniFocus/OmniFocus.ofocus</string>
+    </array>
+  </dict>
+</plist>
+

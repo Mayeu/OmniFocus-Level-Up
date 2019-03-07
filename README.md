@@ -27,7 +27,7 @@ Thus, this script.
 This may break your Habitica. It should not break your OmniFocus (it only read
 stuff), but remember that:
 
-[img/i-have-no-idea-what-im-doing-doing.jpg]
+![I have idea what I'm doing.](img/i-have-no-idea-what-im-doing-doing.jpg)
 
 ## How to use
 

@@ -5,7 +5,7 @@
     <key>EnvironmentVariables</key>
     <dict>
       <key>PATH</key>
-      <string>/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin</string>
+      <string>/Users/m/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/sbin</string>
     </dict>
     <key>Label</key>
     <string>me.mayeu.script.OmniHabitica</string>
@@ -18,6 +18,10 @@
     <array>
       <string>/Users/m/Library/Containers/com.omnigroup.OmniFocus3/Data/Library/Application Support/OmniFocus/OmniFocus.ofocus</string>
     </array>
+    <key>StandardOutPath</key>
+    <string>/Users/m/Library/Logs/me.mayeu.script.OmniHabitica.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/m/Library/Logs/me.mayeu.script.OmniHabitica.err.log</string>
   </dict>
 </plist>
 

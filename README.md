@@ -24,6 +24,11 @@ Thus, this script.
 
 ## :warning: WARNING :warning:
 
-This may break your Habitica. It should not break your OmniFocus (it only read stuff), but remember that:
+This may break your Habitica. It should not break your OmniFocus (it only read
+stuff), but remember that:
 
 [img/i-have-no-idea-what-im-doing-doing.jpg]
+
+## How to use
+
+Work in progress, you are on your own for know!

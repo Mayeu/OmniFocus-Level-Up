@@ -70,14 +70,13 @@ last_processed_time=`cat "$last_run_file"`
 generate_timestamp() {
   while read -r line
   do
-     IFS="|" read macdate title 
+     IFS="|" read macdate title <<< ${line}
      timestamp=$(gdate -d"$(echo ${macdate} | sed -e 's/ at//')" +%s)
      echo "${timestamp}|${macdate}|${title}"
   done
 }
 
 todo_to_process |
-tee todo-to-process.log |
 generate_timestamp |
 sort |
 while read -r line;

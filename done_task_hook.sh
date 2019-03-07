@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -xeuo pipefail
 IFS=$'\n\t'
 readonly DEBUG=false
 
@@ -67,25 +67,37 @@ fi
 # Get the last time we ran which is also the last successfully processed tasks completion time
 last_processed_time=`cat "$last_run_file"`
 
+generate_timestamp() {
+  while read -r line
+  do
+     IFS="|" read macdate title 
+     timestamp=$(gdate -d"$(echo ${macdate} | sed -e 's/ at//')" +%s)
+     echo "${timestamp}|${macdate}|${title}"
+  done
+}
+
 todo_to_process |
+tee todo-to-process.log |
+generate_timestamp |
+sort |
 while read -r line;
 do
   # Split the line in two on the '|'
-  IFS="|" read timestamp title <<< ${line}
-  todo=$(echo "${timestamp}-${title}" | to_slug)
+  IFS="|" read timestamp macdate title <<< ${line}
+  todo=$(echo "${timestamp}-${title}" | to_slug | md5)
   cache_file="${last_run_dir}/${todo}"
 
   if test ! -f "$cache_file"
   then
     # Escape the title, but habitica don't like '\ '
     debug "Process \"${title}\""
-    # todo create the task on habitica
+    # create the task on habitica
     json_data=$(habitica create "$todo")
     debug "Successfully created \"${todo}\""
 
     task_id=$(jq '.data.id' <<< ${json_data} | sed -e 's/"//g')
+    # mark it as done
     habitica "done" "$task_id"
-    # todo mark it as done
     debug "Successfully done \"${title}\""
     info "Sent to Habitica"
 
@@ -94,7 +106,7 @@ do
     touch "$cache_file"
 
     # bump the last timestamp proccessed
-    echo "$timestamp" > "$last_run_file"
+    echo "$macdate" > "$last_run_file"
   fi
 done
 

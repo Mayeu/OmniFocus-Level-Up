@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -xeuo pipefail
 IFS=$'\n\t'
 readonly DEBUG=false
 
@@ -9,11 +9,10 @@ readonly DEBUG=false
 # This script require:
 #  * terminal-notifier(1)
 #  * jq(1)
-#  * my habitica(1) script
 #
 # You can install all that via brew:
 #
-#    brew install terminal-notifier jq mayeu/mayeu/habitica-cli
+#    brew install terminal-notifier jq
 #
 
 function info {
@@ -32,7 +31,6 @@ debug "Start processing the hooks"
 readonly script_dir="${HOME}/Library/Application Support/omnifocus-level-up"
 readonly last_run_file="${script_dir}/last_completed_task_processed"
 readonly last_run_dir="${script_dir}/cache"
-readonly omni_list_script="../libexec/omni-list-done-todo-since.applescript"
 
 # A slug function
 to_slug() {
@@ -52,8 +50,8 @@ to_slug() {
 # List the todo to process
 todo_to_process() {
     # TODO: replace the time with something more logical
-    osascript "$omni_list_script" "$last_processed_time" 2>&1 |
-    sed -e 's/^date //'                                       |
+    osascript $(dirname $0)/omni-list-done-todo-since.applescript "$last_processed_time" 2>&1 |
+    sed -e 's/^date //'                                                  |
     sed -e 's/,/|/'
 }
 

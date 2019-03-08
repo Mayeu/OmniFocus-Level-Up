@@ -50,7 +50,7 @@ to_slug() {
 # List the todo to process
 todo_to_process() {
     # TODO: replace the time with something more logical
-    osascript $(dirname $0)/omni-list-done-todo-since.scpt "$last_processed_time" 2>&1 |
+    osascript $(dirname $0)/omni-list-done-todo-since.applescript "$last_processed_time" 2>&1 |
     sed -e 's/^date //'                                                  |
     sed -e 's/,/|/'
 }

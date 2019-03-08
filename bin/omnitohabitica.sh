@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-set -euo pipefail
+set -xeuo pipefail
 IFS=$'\n\t'
 readonly DEBUG=false
 
@@ -32,7 +32,7 @@ debug "Start processing the hooks"
 readonly script_dir="${HOME}/Library/Application Support/omnifocus-level-up"
 readonly last_run_file="${script_dir}/last_completed_task_processed"
 readonly last_run_dir="${script_dir}/cache"
-readonly omni_list_script="../libexec/omni-list-done-todo-since.applescript"
+readonly omni_list_script="$(dirname $0)/../libexec/omni-list-done-todo-since.applescript"
 
 # A slug function
 to_slug() {

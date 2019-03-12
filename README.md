@@ -40,3 +40,15 @@ To make this work you will need:
 * the `terminal-notifier(1)` tool: `brew install terminal-notifier`
 * the `gdate(1)` utility: `brew install coreutils`
 
+Steps to do:
+- udpate all the paths in `LaunchAgents/me.mayeu.script.OmniHabitica.plist` to
+  match where you cloned the repo, and the OmniFocus database
+- Copy `me.mayeu.script.OmniHabitica.plist` in `~/Library/LaunchAgents/`
+- Load the script with
+  `$ launchctl load ~/Library/LaunchAgents/me.mayeu.script.OmniHabitica.plist`
+- Put the current day date as in this example:
+  `$ echo 'Tuesday 12 March 2019 at 18:57:00' > ~/Library/Application Support/omnifocus-level-up/last_completed_task_processed` 
+
+And voilà! From now on it should trigger a notification every time you mark a
+task as done (or almost everytimes which is OK since it will process missed done
+during the next run).
